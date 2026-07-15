@@ -1,3 +1,7 @@
+---
+created: 2026-06-10T23:35
+updated: 2026-06-12T15:29
+---
 **1.元组i结构体**
 ```rust
 use std::ops::Add;
@@ -33,7 +37,7 @@ Self 是一个类型别名，表示当前正在实现的类型`
 调用方式：**类型名::函数名()**
 
 方法：
-```
+```rust
 fn resize(&mut self, width: u32, height: u32) {
         self.width = width;
         self.height = height;
@@ -42,7 +46,7 @@ fn resize(&mut self, width: u32, height: u32) {
 调用方式：**实例.方法名()**
 
 **4.`option<T>` 枚举类型**
-```
+```rust
 enum Option<T> {
     Some(T),  // 包含一个值
     None,     // 没有值
@@ -86,7 +90,7 @@ let u1 = User { name: "Alice".into(), age: 20, }; // 只改 age，其余从 u1 �
 ``` 
 
 拼接字符串
-```
+```rust
 // 1. format!（最常用、最安全）
 let s = format!("{}{}", "hello", " rust");
 
