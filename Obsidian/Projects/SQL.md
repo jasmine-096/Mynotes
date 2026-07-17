@@ -1,6 +1,6 @@
 ---
 created: 2026-07-14T11:53
-updated: 2026-07-15T10:26
+updated: 2026-07-16T19:29
 ---
 ### 一、 `sql`的基础框架：
 
@@ -96,6 +96,8 @@ WHERE prod_price = 6;
 | 空值判断  | `IS NULL`             | 值为 NULL                 | `WHERE phone IS NULL`                         |
 |       | `IS NOT NULL`         | 值不为 NULL                | `WHERE address IS NOT NULL`                   |
 
+OR与AND运算：
+
 OR运算，满足任一条件皆可，`WHERE Age>60 OR Age<10'意思是，年龄大于60或小于10的都符合条件 
 
 sql与其他语言一样，会优先进行AND运算，列如：
@@ -103,4 +105,12 @@ sql与其他语言一样，会优先进行AND运算，列如：
 
 通过加上括号：`WHERE （id = 'AVL' OR id = 'ASL'） AND price >= 1000`，即可消除歧义
 
+通配符：
+
+这些通配符都要配合LIKE使用
+1. `"%"`通配符：`WHERE name LIKE 'Mike%'` 在Mike之后放%的含义是匹配name中以Mike为开头的名字，%可以表示的字符数量可以是多个，也可以是0，如果这样`WHERE name LIKE '%js%'`,就可以匹配，name中开头是js、结尾是js、中间是js的项，或者这样写`WHERE name LIKE 'J%n'` 就是匹配name中开头是J,结尾是n的数据，==但请注意，%不会匹配值为NULL的项==
+2. `"_"` 通配符：作用与`"%"`一样，但只能匹配一个字符
+3. `"[]"`通配符：指定方括号里面的字符集用于匹配，`WHERE name LIKE '[JM]%'`会返回以J或M开头的name，但是它只能匹配方括号里面的单个字符，你还可以这样`'[^JM]'`用于匹配不以J或M开头的name,这与NOT的功能是一样的
+
+注意：通配符虽然强大，但是它会增加搜索的开销，即便是使用通配符，也最好不要把它放在开头
 
